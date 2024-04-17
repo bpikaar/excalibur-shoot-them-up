@@ -7,12 +7,9 @@ const Resources = {
     Bullet: new ImageSource('images/bullet.png'),
     Enemy: new ImageSource('images/enemy.png'),
 };
-const ResourceLoader = new Loader([
-    Resources.Fish,
-    Resources.Gunman,
-    Resources.Plane,
-    Resources.Bullet,
-    Resources.Enemy
-]);
+const ResourceLoader = new Loader({fullscreenAfterLoad: true})
+for (let res of Object.values(Resources)) {
+    ResourceLoader.addResource(res)
+}
 
 export {Resources, ResourceLoader};
