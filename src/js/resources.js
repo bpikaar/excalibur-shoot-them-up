@@ -8,9 +8,8 @@ const Resources = {
     Enemy: new ImageSource('images/enemy.png'),
 };
 const ResourceLoader = new Loader({
-    fullscreenAfterLoad: true, // todo not possible in DefaultLoader
+    // fullscreenAfterLoad: true, // todo not possible in DefaultLoader
 })
-ResourceLoader.hidePlayButton();
 for (let res of Object.values(Resources)) {
     ResourceLoader.addResource(res)
 }

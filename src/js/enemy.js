@@ -9,7 +9,7 @@ export class Enemy extends Actor {
             width: Resources.Enemy.width,
             height: Resources.Enemy.height
         });
-        this.random = new Random(558879);
+        this.random = new Random();
     }
 
     onInitialize(engine) {
