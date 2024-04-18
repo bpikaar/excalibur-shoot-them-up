@@ -15,7 +15,7 @@ export class Enemy extends Actor {
     onInitialize(engine) {
         this.graphics.use(Resources.Enemy.toSprite());
         // random from bottom of the screen
-        this.pos.x = Math.random() * engine.drawWidth;
+        this.pos.x = this.random.next() * engine.drawWidth;
         this.pos.y = engine.drawHeight;
 
         // Move up in a zig-zag by repeated moveBy's
