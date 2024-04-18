@@ -7,7 +7,7 @@ const Resources = {
     Bullet: new ImageSource('images/bullet.png'),
     Enemy: new ImageSource('images/enemy.png'),
 };
-const ResourceLoader = new DefaultLoader({
+const ResourceLoader = new Loader({
     fullscreenAfterLoad: true, // todo not possible in DefaultLoader
 })
 ResourceLoader.hidePlayButton();

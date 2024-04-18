@@ -15,7 +15,8 @@ export class Game extends Engine {
             // height: 600,
             displayMode: DisplayMode.FillScreen,
             antialiasing:false,
-            resolution:Resolution.GameBoyAdvance
+            resolution:Resolution.GameBoyAdvance,
+            suppressPlayButton: true,
         });
         this.start(ResourceLoader).then(() => this.startGame());
     }
