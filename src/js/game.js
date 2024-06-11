@@ -1,21 +1,21 @@
 import '../css/style.css';
-import {Buttons, DisplayMode, Engine, Input, Resolution, Timer} from "excalibur";
-import {ResourceLoader} from './resources.js';
-import {Fighter} from "./fighter.js";
-import {Enemy} from "./enemy.js";
+import { Buttons, DisplayMode, Engine, Input, Resolution, Timer } from "excalibur";
+import { ResourceLoader } from './resources.js';
+import { Fighter } from "./fighter.js";
+import { Enemy } from "./enemy.js";
 
 export class Game extends Engine {
 
     playerNumber = 0;
     gamepadConnected = false;
-    timer
+    timer;
     constructor() {
         super({
             // width: 800,
             // height: 600,
             displayMode: DisplayMode.FillScreen,
-            antialiasing:false,
-            resolution:Resolution.GameBoyAdvance,
+            antialiasing: false,
+            resolution: Resolution.GameBoyAdvance,
             suppressPlayButton: true,
         });
         this.start(ResourceLoader).then(() => this.startGame());
@@ -34,25 +34,26 @@ export class Game extends Engine {
             const fighter = new Fighter(this.playerNumber++);
             this.add(fighter);
             console.log('Gamepad connected', connectEvent);
-            this.gamepadConnected = true
+            this.gamepadConnected = true;
         });
 
+        // If gamepad is not used add a fighter with keyboard controls
         setTimeout(() => {
-            if(!this.gamepadConnected) {
+            if (!this.gamepadConnected) {
                 const fighter = new Fighter(this.playerNumber++);
                 this.add(fighter);
             }
         }, 2000);
 
 
-    // spawn timer for enemies
+        // spawn timer for enemies
         this.timer = new Timer({
             fcn: () => this.spawn(),
             interval: 2000,
             repeats: true
-        })
-        this.add(this.timer)
-        this.timer.start()
+        });
+        this.add(this.timer);
+        this.timer.start();
     }
 
     startGame() {
